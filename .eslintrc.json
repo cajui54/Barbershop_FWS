@@ -1,0 +1,6 @@
+{
+  "extends": "next/core-wev-vitals",
+  "rules": {
+    "no-unused-vars": "error"
+  }
+}
