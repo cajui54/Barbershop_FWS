@@ -20,16 +20,17 @@ const ServiceItem = ({ service }: ServiceItemProps) => {
             className="rounded-xl object-cover"
           />
         </div>
+
         <div className="space-y-2">
           <h3 className="text-sm font-semibold">{service.name}</h3>
           <p className="text-sm text-gray-400">{service.description}</p>
 
-          <div className="flex items-center">
+          <div className="flex items-center justify-between">
             <p className="text-sm font-bold text-primary">
               {formatCurrency(Number(service.price))}
             </p>
 
-            <Button variant="secondary" className="ml-24" size="sm">
+            <Button variant="secondary" className="ml-20" size="sm">
               Reservar
             </Button>
           </div>

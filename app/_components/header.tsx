@@ -2,24 +2,9 @@ import React from 'react'
 import { Card, CardContent } from './ui/card'
 import Image from 'next/image'
 import { Button } from './ui/button'
-import {
-  Calendar1Icon,
-  HomeIcon,
-  LogOutIcon,
-  MenuIcon,
-  Sidebar,
-} from 'lucide-react'
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from './ui/sheet'
-import { quickSearchOptions } from '../_constants/search'
-import { Avatar, AvatarImage } from './ui/avatar'
-import Link from 'next/link'
+import { MenuIcon } from 'lucide-react'
+import { Sheet, SheetTrigger } from './ui/sheet'
+
 import SidebarSheet from './sidebar-sheet'
 
 const Header = () => {

@@ -82,7 +82,9 @@ const BarbershopPage = async ({ params }: BarbershopPageParams) => {
       </div>
 
       <div className="space-y-3 border border-solid p-5">
-        <h2 className="text-xs font-bold uppercase text-gray-400">Serviços</h2>
+        <h2 className="mb-3 text-xs font-bold uppercase text-gray-400">
+          Serviços
+        </h2>
         <div className="space-y-3">
           {barbershop.services.map((service) => (
             <ServiceItem key={service.id} service={service} />
