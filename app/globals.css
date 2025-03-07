@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply h-full;
+}
 body {
   font-family: Arial, Helvetica, sans-serif;
+  @apply h-full;
 }
 
 @layer utilities {
@@ -57,8 +61,6 @@ body {
     @apply h-full bg-background text-foreground;
   }
 }
-
-
 
 @layer base {
   * {
