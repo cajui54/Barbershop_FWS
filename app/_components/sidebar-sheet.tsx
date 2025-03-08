@@ -21,7 +21,6 @@ const SidebarSheet = () => {
   const { data } = useSession()
   const handleLoginWithGoogleClick = async () => await signIn('google')
   const handleLogoutClick = () => signOut()
-  console.log(data)
 
   return (
     <SheetContent className="overflow-y-auto">
@@ -75,14 +74,12 @@ const SidebarSheet = () => {
         )}
       </div>
       <div className="flex flex-col gap-2 border-b border-solid py-5">
-        <SheetClose asChild>
-          <Button className="justify-start gap-2" variant="ghost" asChild>
-            <Link href="/">
-              <HomeIcon size={18} />
-              Início
-            </Link>
-          </Button>
-        </SheetClose>
+        <Button className="justify-start gap-2" variant="ghost" asChild>
+          <Link href="/">
+            <HomeIcon size={18} />
+            Início
+          </Link>
+        </Button>
 
         <Button className="justify-start gap-2" variant="ghost">
           <Calendar1Icon size={18} />
@@ -90,24 +87,25 @@ const SidebarSheet = () => {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-2 border-b border-solid py-5">
-        {quickSearchOptions.map((option) => (
-          <Button
-            key={option.title}
-            className="justify-start gap-2"
-            variant="ghost"
-          >
-            <Image
-              alt={option.title}
-              src={option.imageUrl}
-              height={18}
-              width={18}
-            />
-            {option.title}
-          </Button>
-        ))}
-      </div>
-
+      <Dialog>
+        <div className="flex flex-col gap-2 border-b border-solid py-5">
+          {quickSearchOptions.map((option) => (
+            <SheetClose key={option.title} asChild>
+              <Button variant="ghost" asChild className="justify-start gap-2">
+                <Link href={`/barbershops?service=${option.title}`}>
+                  <Image
+                    alt={option.title}
+                    src={option.imageUrl}
+                    height={18}
+                    width={18}
+                  />
+                  {option.title}
+                </Link>
+              </Button>
+            </SheetClose>
+          ))}
+        </div>
+      </Dialog>
       <div className="flex flex-col gap-2 py-5">
         <Button
           onClick={handleLogoutClick}
