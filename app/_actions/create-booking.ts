@@ -13,7 +13,7 @@ export const createBooking = async (params: createBookingParams) => {
   if (!user) throw new Error('User not found')
 
   await db.booking.create({
-    data: { ...params, userId: (user as any).id },
+    data: { ...params, userId: (user.user as any).id },
   })
   revalidatePath('/barbershops/[id]')
   revalidatePath('/bookings')

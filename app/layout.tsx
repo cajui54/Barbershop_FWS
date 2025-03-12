@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <AuthProvider>
           <div className="flex h-full flex-col">
-            <div className="flex-1">{children}</div>
+            <div className="flex-1 sm:mx-auto sm:w-[500px]">{children}</div>
             <Footer />
           </div>
         </AuthProvider>

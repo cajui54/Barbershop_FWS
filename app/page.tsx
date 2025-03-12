@@ -7,14 +7,37 @@ import { quickSearchOptions } from './_constants/search'
 import BookingItem from './_components/booking-item'
 import Search from './_components/search'
 import Link from 'next/link'
+import { authOptions } from './_lib/auth'
+import { getServerSession } from 'next-auth'
 
 export default async function Home() {
+  const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany()
   const popularBarbershops = await db.barbershop.findMany({
     orderBy: {
       name: 'desc',
     },
   })
+  const confirmedBookings = session?.user
+    ? await db.booking.findMany({
+        where: {
+          userId: (session?.user as any).id,
+          date: {
+            gte: new Date(),
+          },
+        },
+        include: {
+          service: {
+            include: {
+              barbershop: true,
+            },
+          },
+        },
+        orderBy: {
+          date: 'asc',
+        },
+      })
+    : []
 
   return (
     <div>
@@ -51,7 +74,13 @@ export default async function Home() {
             className="rounded-xl object-cover"
           />
         </div>
-        <BookingItem />
+
+        <h2 className="mt-4">Agendamentos</h2>
+        <div className="my-1 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          {confirmedBookings.map((booking) => (
+            <BookingItem key={booking.id} booking={booking} />
+          ))}
+        </div>
 
         <h2 className="my-4">Recomendados</h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
