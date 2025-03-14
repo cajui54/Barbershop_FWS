@@ -89,12 +89,19 @@ export default async function Home() {
           />
         </div>
 
-        <h2 className="mt-4">Agendamentos</h2>
-        <div className="my-1 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {confirmedBookings.map((booking) => (
-            <BookingItem key={booking.id} booking={booking} />
-          ))}
-        </div>
+        {confirmedBookings.length > 0 && (
+          <>
+            <h2 className="mt-4">Agendamentos</h2>
+            <div className="my-1 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+              {confirmedBookings.map((booking) => (
+                <BookingItem
+                  key={booking.id}
+                  booking={JSON.parse(JSON.stringify(booking))}
+                />
+              ))}
+            </div>
+          </>
+        )}
 
         <h2 className="my-4">Recomendados</h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
