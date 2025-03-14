@@ -11,5 +11,4 @@ Next.js | React | Tailwind CSS | Next Auth | Shadcn | Date-fns | Zod | React-Hoo
 
 🙌 Um excelente projeto conduzido pelo grande Felipe Rocha na Full Stack Club, projeto que me agregou muito, muito aprendizado!
 
-👉 Git: https://lnkd.in/dJ3EC-aG
 🌐 Deploy: https://lnkd.in/dgt9vMR3
