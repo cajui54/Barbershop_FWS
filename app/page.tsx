@@ -52,7 +52,7 @@ export default async function Home() {
 
         <div className="mt-6 flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {quickSearchOptions.map((option, index) => (
-            <Button asChild className="gap-2" variant="secondary">
+            <Button key={index} asChild className="gap-2" variant="secondary">
               <Link href={`/barbershops?service=${option.title}`}>
                 <Image
                   src={option.imageUrl}
