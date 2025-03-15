@@ -55,7 +55,7 @@ const Bookings = async () => {
         {confirmedBookings.length === 0 && pastBookings.length === 0 && (
           <p>Você não possui agendamentos.</p>
         )}
-        {confirmedBookings.length === 0 && (
+        {confirmedBookings.length > 0 && (
           <>
             <h2 className="text-xl font-bold">Confirmados</h2>
             {confirmedBookings.map((booking) => (
