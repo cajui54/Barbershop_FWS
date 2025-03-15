@@ -31,6 +31,7 @@ import {
 } from './ui/dialog'
 import { deleteBooking } from '../_actions/delete-booking'
 import { toast } from 'sonner'
+import BookingSummary from './booking-summary'
 
 interface BookingItemProps {
   booking: Prisma.BookingGetPayload<{
@@ -132,40 +133,13 @@ const BookingItem = ({ booking }: BookingItemProps) => {
             >
               {isConfirmed ? 'Confirmado' : 'Finalizado'}
             </Badge>
-
-            <Card className="mb-6 mt-3">
-              <CardContent className="space-y-3 p-3">
-                <div className="item-center flex justify-between">
-                  <h2 className="font-bold">{service.name}</h2>
-                  <p className="text-sm font-bold">
-                    {formatCurrency(Number(service.price))}
-                  </p>
-                </div>
-
-                <div className="items flex justify-between">
-                  <h2 className="text-sm text-gray-400">Data</h2>
-                  <p className="text-sm">
-                    {format(booking.date, "d 'de' MMMM", {
-                      locale: ptBR,
-                    })}
-                  </p>
-                </div>
-
-                <div className="items flex justify-between">
-                  <h2 className="text-sm text-gray-400">Horário</h2>
-                  <p className="text-sm">
-                    {format(booking.date, 'HH:mm', {
-                      locale: ptBR,
-                    })}
-                  </p>
-                </div>
-
-                <div className="items flex justify-between">
-                  <h2 className="text-sm text-gray-400">Barbearia</h2>
-                  <p className="text-sm">{service.name}</p>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="mb-3 mt-6">
+              <BookingSummary
+                barbershop={service.barbershop}
+                service={service}
+                selectedDate={booking.date}
+              />
+            </div>
 
             <div className="space-y-3">
               {service.barbershop.phones.map((phone, index) => (
